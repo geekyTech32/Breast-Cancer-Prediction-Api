@@ -14,7 +14,7 @@ from tensorflow.keras.applications import efficientnet
 
 app = FastAPI()
 # loading model
-model = load_model("classification_model_h5.h5" , compile=False)
+model = load_model("Classification__model.keras" , compile=False)
 # backend logic
 app.post("/predict")
 def classification_predict(img):
