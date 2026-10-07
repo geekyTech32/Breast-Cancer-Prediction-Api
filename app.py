@@ -15,7 +15,7 @@ from tensorflow.keras.applications import efficientnet
 
 
 # loading model
-model = load_model("classification_model_2_tf.h5")
+model = load_model("Classification_model.keras")
 # backend logic
 def classification_predict(img):
     # preprocessing img 
