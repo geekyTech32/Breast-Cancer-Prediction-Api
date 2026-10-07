@@ -3,8 +3,7 @@
 
 # In[4]:
 
-
-import streamlit 
+from fastapi import FastAPI
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import numpy as np
@@ -13,10 +12,11 @@ from tensorflow.keras.applications import efficientnet
 
 # In[ ]:
 
-
+app = FastAPI()
 # loading model
-model = load_model("Classification_model.keras")
+model = load_model("classification_model_h5.h5" , compile=False)
 # backend logic
+app.post("/predict")
 def classification_predict(img):
     # preprocessing img 
     img_array = efficientnet.preprocess_input(img)
@@ -24,5 +24,5 @@ def classification_predict(img):
     img_array = np.expand_dims(img_array, axis=0)
     # predicting array
     result = model.predict(img_array)
-    return result 
+    return {"Prediction": result[0]} 
 
